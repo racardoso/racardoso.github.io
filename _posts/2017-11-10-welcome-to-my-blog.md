@@ -21,53 +21,52 @@ Github pages offer you a way to create a repo on your Github account and then cr
 
 ## How I made my blog?
 
-First of all let me explain the difference bettween a **project page** and **user page**. They are nearly identical, but there are a few important differences between them. A user page are always build from master. So you need to create a repository with the format `username.github.io` and then you can access your page via `http://username.github.io`. While a project page have the format `username.github.io/projectname` or `orgname.github.io/projectname` and can be build from `master`, `gh-pages` and, `\docs` folder on master. 
+First of all let me explain the difference bettween a **project page** and **user page**. They are nearly identical, but there are a few important differences between them. A user page are always build from master. So you need to create a repository with the format *username.github.io* and then you can access your page via *http://username.github.io*. While a project page have the format *username.github.io/projectname* or *orgname.github.io/projectname* and can be build from *master*, *gh-pages* and, */docs* folder on master. 
 
 It's important to know the difference bettween project pages and user pages to avoid mess up things. A while ago I created a small test creating a project page and called it blog, it was just a test, and I forgot about that repository. Recently, I start to create this blog (user page) and whatever I try to access my blog I was getting the (old) test version. Why? Because it on the same domain and if you have a project page called blog already published at the same URL, and the project page will take precedence. You can read more about it Github page types [here][github_pages_help]
 
-After that I've started with some Jekyll templates offered by the Github settings, one click and done. But, I do not like it. They are all weird. First of all it's only created a `_config.yaml` with a `jekyll-theme:` entry. I wan't something simple, I want to start simple, but have a little control of what's going on. So I started to crawl some tutorials on the internet and I find a nice one [here][tutorial_jekyll]. I follow the tutorial but I have somethings to point out.
+After that I've started with some Jekyll templates offered by the Github settings, one click and done. But, I do not like it. They are all weird. First of all it's only created a *_config.yml* with a *jekyll-theme:* entry. I wan't something simple, I want to start simple, but have a little control of what's going on. So I started to crawl some tutorials on the internet and I find a nice one [here][tutorial_jekyll]. I follow the tutorial but I have somethings to point out.
 
 ### Installing Jekyll on you local machine
 
-It's important to build and test your page localy since, Github will only trigger the build process when you push changes to master branch. You can do that and check the build results on the repo Settings. The only problem is that you may end up with lots of "dirty" commits on the master tree unless you `rebase` and `force-push`.
+It's important to build and test your page localy since, Github will only trigger the build process when you push changes to master branch. You can do that and check the build results on the repo Settings. The only problem is that you may end up with lots of "dirty" commits on the master tree unless you *rebase* and *force-push*.
  
 I use Ubuntu 16.04 LTS and the author uses MacOS and XCode (yucc!). So, if you uses a Debian based distro[^2] you can follow my notes here to install Jekyll. 
 
 Install the dependencies:
 
-```
+```console
 sudo apt-get install ruby ruby-dev zlib1g-dev -y
 
 ```
 
-Why I have to install `ruby-dev` package too? Because if you don't you will get a `"Failed to get header"` error when you try to run Jekyll serve. You also have to install `zlib1g-dev` or you get a configure error:
+Why I have to install *ruby-dev* package too? Because if you don't you will get a *"Failed to get header"* error when you try to run Jekyll serve. You also have to install *zlib1g-dev* or you get a configure error:
 
-```
-...
+
+```console
 Gem::Installer::ExtensionBuildError: ERROR: Failed to build gem native extension.
 ...
 zlib is missing; necessary for building libxml2
 *** extconf.rb failed ***
-
 ```
 
 Now you can install Bundle:
 
-```
+```console
 sudo gem install bundle 
 ```
 
 ### Create a dev configuration file
 
-To test your changes on the page locally it's good idea create a `_config_dev.yaml` (always keep production and develop environments separated). Them, on the `_config.yaml` (production) you will have to fill the `baseurl` and `url` field with the relative path initial page, in my case "/" (index page) and the url with your `http://username.github.io` (or your custom domain) before commit it to `master`. On `_config_dev.yaml` (development) I fill those fields with `""`.
+To test your changes on the page locally it's good idea create a *_config_dev.yml* (always keep production and develop environments separated). Them, on the *_config.yml* (production) you will have to fill the *baseurl* and *url* field with the relative path initial page, in my case "/" (index page) and the url with your *http://username.github.io* (or your custom domain) before commit it to *master*. On *_config_dev.yml* (development) I fill those fields with *""*.
 
 Run Jekyll server:
 
-```
-jekyll serve --config _config_dev.yaml
+```console
+jekyll serve --config _config_dev.yml
 
 ```
-It will run the Jekyll server at `localhost:4000` with your dev configurations. Now you can just check your changes before submit to Github.
+It will run the Jekyll server at *localhost:4000* with your dev configurations. Now you can just check your changes before submit to Github.
 
 ## Too simple
 
@@ -80,6 +79,7 @@ Well, it is what it is. So I will have to customize somethings if I ever have ti
 [^1]: Jekyll allows to select other markdown type. By default it uses [kramdown][https://kramdown.gettalong.org/quickref.html]. I am stick with the default for now.
 [^2]: I've tested it on a Debian based distro bt, I guess the process will be pretty much the same on other Linux distros.
 
+[markdown_site]: https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet
 [jekyll_page]: https://jekyllrb.com/
 [github_pages]: https://pages.github.com/
 [github_pages_help]: https://help.github.com/articles/user-organization-and-project-pages/
