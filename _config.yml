@@ -10,4 +10,4 @@ sass:
 include: ['_pages']
 kramdown:
   input: GFM
-
+  syntax_highlighter: rouge

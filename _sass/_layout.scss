@@ -59,6 +59,21 @@ time {
 	margin: 0 auto;
 }
 
+pre {
+	padding: 5px 5px;
+}
+
+em {
+	background: #d1d1d1;
+	font-style: normal;
+	border-radius: 3px;
+	box-sizing: border-box;
+	color: #000;
+	font-family: monospace;
+	font-size: 1em;
+	padding: 3px;
+}
+
 /* Aside */
 
 aside {
