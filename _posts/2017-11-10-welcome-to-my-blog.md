@@ -68,9 +68,9 @@ jekyll serve --config _config_dev.yml
 ```
 It will run the Jekyll server at *localhost:4000* with your dev configurations. Now you can just check your changes before submit to Github.
 
-## Too simple
+## Conclusion
 
-Well, it is what it is. So I will have to customize somethings if I ever have time for that. But, for now, I will focus on the content and have my notes transcribed here.
+Jekyll is a nice static web page generator. With only few minutes I was able to create my personal page and upload that on Gihub. I still have to customize somethings (if I ever have time for that) but I'm happy with the result. For now, I will focus on the content and have my notes transcribed here.
 
 * * *
 
