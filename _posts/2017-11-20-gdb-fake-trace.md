@@ -36,16 +36,16 @@ Now we compile it with debug info and launch GDB. Suppose we want to log the val
 ```console
 
 (gdb) b foo.c:8
-Ponto de parada 1 at 0x4004ea: file foo.c, line 8.
+Breakpoint 1 at 0x4004ea: file foo.c, line 8.
 (gdb) commands 1
-Digite os comandos para ponto(s) de interrupção 1, um por linha.
+Type commands for when breakpoint 1 is hit, one per line.
 End with a line saying just "end".
 >silent
 >print a
 >cont
 >end
 (gdb) r
-Starting program: /home/rogerio/a.out 
+Starting program: /a.out 
 $1 = 0
 $2 = 0
 $3 = 2
