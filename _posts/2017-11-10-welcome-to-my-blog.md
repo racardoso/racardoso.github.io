@@ -31,13 +31,21 @@ After that I've started with some Jekyll templates offered by the Github setting
 
 It's important to build and test your page localy since, Github will only trigger the build process when you push changes to master branch. You can do that and check the build results on the repo Settings. The only problem is that you may end up with lots of "dirty" commits on the master tree unless you *rebase* and *force-push*.
  
-I use Ubuntu 16.04 LTS and the author uses MacOS and XCode (yucc!). So, if you uses a Debian based distro[^2] you can follow my notes here to install Jekyll. 
+I use Ubuntu 16.04 LTS and Fedora 26, the author uses MacOS and XCode (yucc!). So, if you uses a Debian or Redhat based distro you can follow my notes here to install Jekyll.
 
 Install the dependencies:
 
 ```console
-sudo apt-get install ruby ruby-dev zlib1g-dev -y
+sudo apt-get install ruby ruby-dev zlib1g-dev libffi-dev libxml2-dev libyaml-dev -y
+```
 
+For Fedora the process is pretty much the same except that you must to install *redhat-rpm-config* package otherwise you will get an error when try install jekyll gem:
+
+```console                                                                                
+ /usr/local/lib64/gems/ruby/ffi-1.9.18/mkmf.log                                 
+                                                                                
+extconf failed, exit code 1                                                     
+gcc: error: /usr/lib/rpm/redhat/redhat-hardened-cc1: No such file or directory" 
 ```
 
 Why I have to install *ruby-dev* package too? Because if you don't you will get a *"Failed to get header"* error when you try to run Jekyll serve. You also have to install *zlib1g-dev* or you get a configure error:
@@ -50,11 +58,19 @@ zlib is missing; necessary for building libxml2
 *** extconf.rb failed ***
 ```
 
-Now you can install Bundle:
+Now you can install Bundle and Jekyll:
 
 ```console
-sudo gem install bundle 
+sudo gem install bundle jekyll
 ```
+
+Then on the project root folder you must run:
+
+```console
+bundle install
+``` 
+
+This will install all bundle dependencies. That's it, to create your github pages.
 
 ### Create a dev configuration file
 
@@ -63,7 +79,7 @@ To test your changes on the page locally it's good idea create a *_config_dev.ym
 Run Jekyll server:
 
 ```console
-jekyll serve --config _config_dev.yml
+bundle exec jekyll serve --config _config_dev.yml
 
 ```
 It will run the Jekyll server at *localhost:4000* with your dev configurations. Now you can just check your changes before submit to Github.
@@ -74,10 +90,10 @@ Jekyll is a nice static web page generator. With only few minutes I was able to 
 
 * * *
 
-**Notes:**
+### Notes:
 
 [^1]: Jekyll allows to select other markdown type. By default it uses [kramdown][https://kramdown.gettalong.org/quickref.html]. I am stick with the default for now.
-[^2]: I've tested it on a Debian based distro bt, I guess the process will be pretty much the same on other Linux distros.
+
 
 [markdown_site]: https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet
 [jekyll_page]: https://jekyllrb.com/
